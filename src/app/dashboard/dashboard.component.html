@@ -1,0 +1,18 @@
+<!-- Progress spinner while API gets loaded -->
+<app-dashboard-loader [apiLoadedStatus]='apiLoadedStatus'></app-dashboard-loader>
+
+<!-- Dashboard to display server details -->
+<mat-drawer-container *ngIf="!apiLoadedStatus">
+    
+    <!-- Drawer elements which are displayed through the app-server-component -->
+    <mat-drawer #drawer mode="side">
+        <div class="mat-title">Server status</div>
+        <app-server-component [mainStacks]="mainStacks"></app-server-component>
+    </mat-drawer>
+    
+    <!-- Main server content -->
+    <mat-drawer-content>
+        <!-- Server and server controls inside app-dashboard content component -->
+        <app-dashboard-content [mainStacks]="mainStacks"></app-dashboard-content>
+    </mat-drawer-content>
+</mat-drawer-container>

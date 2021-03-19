@@ -1,0 +1,79 @@
+<!-- *ngFor directive iterates through the main stacks -->
+<hr>
+
+<!-- Titles of the main stacks in uppercase (STACK 1 AND STACK 2) -->
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let mainStack of mainStacks">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ mainStack.name | uppercase }}
+            </mat-panel-title>
+            <mat-panel-description>
+                Status panel
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        
+        <!-- Individual servers inside main stack (Old Stack, New Gen Stack)-->
+        <mat-accordion>
+            <mat-expansion-panel
+                *ngFor="let subStacks of mainStack.children"
+                class="subStacks-panel-description">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ subStacks.name }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{ subStacks.name | titlecase }} servers
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!-- Type of server (Backend, Frontend or Admin server) -->
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let servers of subStacks.children">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{ servers.name }}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                View servers
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        
+                        <!-- Server and server status -->
+                        <ul class="expanded" *ngFor="let server of servers.children">
+                            <li
+                                [ngStyle]="{'color':server.startButton!=='enabled'?'#FBC200':'#808080'}">
+                                {{server.name}}
+                                <span *ngIf="server.startButton==='enabled'">(Offline)</span>
+                                <span *ngIf="server.stopButton==='enabled'">(Online)</span>
+                            </li>
+                        </ul>    
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-expansion-panel>
+        </mat-accordion> 
+    </mat-expansion-panel>
+</mat-accordion>
+<!-- 
+                    <ul class="expanded" *ngFor="let server of servers.children">
+                        <li
+                            [ngStyle]="{'color':server.startButton!=='enabled'?'#FBC200':'#808080'}">
+                            {{server.name}}
+                            <span *ngIf="server.startButton==='enabled'">(Offline)</span>
+                            <span *ngIf="server.stopButton==='enabled'">(Online)</span>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </span>
+    </div>
+    <hr>
+</div> -->
+
+<!-- <mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title></mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+        </mat-expansion-panel-header>
+    </mat-expansion-panel>
+</mat-accordion> -->
