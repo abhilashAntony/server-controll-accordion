@@ -2,7 +2,7 @@
 
 ## Introduction
 
-An updated version of the previously submitted server-control demo app. The current version now includes angular material components.
+An updated version of the previously submitted server-control demo app. The current version now includes angular material components. The control panel is displayed using Material Expansion Panel, inside an accordion element. This allows for numerous dynamically rendered elements to occupy the viewport.
 
 ## Installation
 
